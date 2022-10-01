@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Managers;
@@ -11,8 +12,15 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private SpriteRenderer front, back, lettuce, tomato1, tomato2;
     [SerializeField] private Transform visuals;
+    [SerializeField] private GameObject charmEffect;
+    [SerializeField] private List<SpriteRenderer> sprites;
+    [SerializeField] private Color charmColor;
+
+    private bool charmed;
     
     public Field Field { get; set; }
+
+    public bool IsCharmed => charmed;
 
     private void Start()
     {
@@ -57,5 +65,18 @@ public class Enemy : MonoBehaviour
         if (diff.magnitude > 4f) return;
         var inversed = diff.normalized * 1 / diff.magnitude;
         body.AddForce(inversed * 2f, ForceMode2D.Impulse);
+    }
+
+    public void Charm()
+    {
+        if (charmed) return;
+        charmed = true;
+        charmEffect.SetActive(true);
+        Colorize(charmColor);
+    }
+
+    public void Colorize(Color color)
+    {
+        sprites.ForEach(s => s.color *= color * color);
     }
 }

@@ -141,6 +141,11 @@ public class Field : MonoBehaviour
     {
         var p = enemy.transform.position;
 
+        if (!enemy.IsCharmed)
+        {
+            health.TakeDamage<GameObject>(1);
+        }
+
         var amount = 10 * combo;
         var shown = amount * scoreDisplay.Multi;
         var e = EffectManager.AddTextPopup(shown.AsScore(), p + Vector3.up * 0.5f);
@@ -152,8 +157,22 @@ public class Field : MonoBehaviour
         PushEnemies(p);
 
         combo++;
+
+        Charm();
+    }
+
+    private void Charm()
+    {
+        var amount = stats[5];
+        if (amount < 1) return;
+
+        var p = transform.position;
+        var targets = enemies
+            .OrderBy(e => Vector3.Distance(e.transform.position, p))
+            .Take(amount)
+            .ToList();
         
-        health.TakeDamage<GameObject>(1);
+        targets.ForEach(t => t.Charm());
     }
 
     public void AddMulti()
