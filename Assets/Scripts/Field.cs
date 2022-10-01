@@ -11,20 +11,20 @@ public class Field : MonoBehaviour
 
     private List<Enemy> enemies = new();
     
-    private int round = 1;
+    private int round;
 
     public bool HasEnemies => enemies.Any();
 
     private void Start()
     {
-        AddEnemies();
-        Invoke(nameof(Increment), 10f);
+        Increment();
     }
 
     private void Increment()
     {
         round++;
         AddEnemies();
+        Invoke(nameof(Increment), 10f);
     }
 
     public void AddEnemies()
