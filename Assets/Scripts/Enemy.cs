@@ -15,12 +15,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject charmEffect;
     [SerializeField] private List<SpriteRenderer> sprites;
     [SerializeField] private Color charmColor, burnColor;
+    [SerializeField] private Transform eyepatch;
 
     private bool charmed, burned;
+    private bool champ;
     
     public Field Field { get; set; }
 
     public bool IsCharmed => charmed;
+    
+    public bool IsChamp => champ;
 
     private void Start()
     {
@@ -70,7 +74,7 @@ public class Enemy : MonoBehaviour
 
     public void Charm()
     {
-        if (charmed) return;
+        if (charmed || champ) return;
         charmed = true;
         charmEffect.SetActive(true);
         Colorize(charmColor);
@@ -94,5 +98,12 @@ public class Enemy : MonoBehaviour
         EffectManager.AddEffect(6, transform.position);
         Field.RemoveEnemy(this, true);
         Destroy(gameObject);
+    }
+
+    public void Champify()
+    {
+        champ = true;
+        eyepatch.gameObject.SetActive(true);
+        eyepatch.localScale = Vector3.one.WhereY(Misc.PlusMinusOne());
     }
 }

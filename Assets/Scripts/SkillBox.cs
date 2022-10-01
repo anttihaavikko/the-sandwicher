@@ -10,7 +10,7 @@ public class SkillBox : MonoBehaviour
     private int level = 1;
 
     public const int BaseHeal = 3;
-    public const int HealPerAlchemyLevel = 2;
+    public const int HealPerAlchemyLevel = 3;
     public const int SlowAmountPerLevel = 20;
 
     private void Start()

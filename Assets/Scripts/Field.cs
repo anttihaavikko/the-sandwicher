@@ -62,6 +62,11 @@ public class Field : MonoBehaviour
             var enemy = Instantiate(enemyPrefab, pos, Quaternion.identity);
             enemy.Field = this;
             enemies.Add(enemy);
+
+            if (round > 3 && (enemies.Count > 70 && Random.value < 0.5f || Random.value < 0.1f))
+            {
+                enemy.Champify();
+            }
         }
     }
 
@@ -143,15 +148,18 @@ public class Field : MonoBehaviour
 
         if (!enemy.IsCharmed)
         {
-            health.TakeDamage<GameObject>(1);
+            health.TakeDamage<GameObject>(enemy.IsChamp ? round : 1);
         }
 
         var amount = 10 * combo;
         var shown = amount * scoreDisplay.Multi;
         var e = EffectManager.AddTextPopup(shown.AsScore(), p + Vector3.up * 0.5f);
         Tweener.RotateToBounceOut(e.transform, Quaternion.Euler(0, 0, Random.Range(-10f, 10f)), 0.2f);
-        
-        scoreDisplay.Add(amount);
+
+        if (player.gameObject.activeInHierarchy)
+        {
+            scoreDisplay.Add(amount);
+        }
         
         enemies.Remove(enemy);
         PushEnemies(p);
