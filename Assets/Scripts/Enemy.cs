@@ -24,8 +24,8 @@ public class Enemy : MonoBehaviour
         front.transform.Rotate(new Vector3(0, 0, angle));
         back.transform.Rotate(new Vector3(0, 0, angle + Random.Range(-20f, 20f)));
         
-        tomato1.transform.position += Vector3.zero.RandomOffset(0.15f);
-        tomato2.transform.position += Vector3.zero.RandomOffset(0.15f);
+        tomato1.transform.position += Vector3.zero.RandomOffset(0.2f);
+        tomato2.transform.position += Vector3.zero.RandomOffset(0.2f);
 
         front.flipX = Random.value > 0.5f;
         front.flipY = Random.value > 0.5f;

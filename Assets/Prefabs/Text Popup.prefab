@@ -439,8 +439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82e881e561ef4c5f8fa791fc3a2507c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: 0.9
-  max: 1.1
+  min: 0.8
+  max: 1.2
 --- !u!1 &6276915599907453766
 GameObject:
   m_ObjectHideFlags: 0

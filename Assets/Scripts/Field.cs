@@ -56,7 +56,8 @@ public class Field : MonoBehaviour
     {
         var p = enemy.transform.position;
 
-        var e = EffectManager.AddTextPopup((10 * multi).AsScore(), p + Vector3.up * 0.5f);
+        var amount = Mathf.RoundToInt(10 * Mathf.Pow(multi, 2));
+        var e = EffectManager.AddTextPopup(amount.AsScore(), p + Vector3.up * 0.5f);
         Tweener.RotateToBounceOut(e.transform, Quaternion.Euler(0, 0, Random.Range(-10f, 10f)), 0.2f);
         
         enemies.Remove(enemy);
