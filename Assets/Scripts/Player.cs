@@ -2,7 +2,6 @@ using System;
 using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -11,6 +10,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D body;
     private bool canLand = true;
+    private bool launching;
 
     private void Start()
     {
@@ -19,12 +19,37 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        CheckLaunch();
+    }
+
+    private void CheckLaunch()
+    {
+        if (Input.GetMouseButtonDown(0) && !launching)
         {
-            var pos = cam.ScreenToWorldPoint(Input.mousePosition).WhereZ(0);
-            var dir = pos - transform.position;
-            body.AddForce(dir * 5f, ForceMode2D.Impulse);
+            Launch();
         }
+    }
+
+    private void Launch()
+    {
+        var pos = cam.ScreenToWorldPoint(Input.mousePosition).WhereZ(0);
+        var dir = pos - transform.position;
+        body.AddForce(dir * 5f, ForceMode2D.Impulse);
+        launching = true;
+    }
+
+    private void FixedUpdate()
+    {
+        Curve();
+    }
+
+    private void Curve()
+    {
+        if (!field.HasEnemies || !launching) return;
+        var p = transform.position;
+        var closest = field.GetClosestEnemyPosition(p);
+        var diff = closest - p;
+        body.AddForce(diff.normalized * 30f, ForceMode2D.Force);
     }
 
     public void RotateTo(float angle)
@@ -38,6 +63,7 @@ public class Player : MonoBehaviour
         if (col.collider.CompareTag("Wall"))
         {
             Land();
+            RotateTo(col.collider.GetComponent<Wall>().Angle);
         }
     }
 
@@ -49,6 +75,8 @@ public class Player : MonoBehaviour
         if (!canLand) return;
         
         canLand = false;
+        launching = false;
+        field.AddEnemies();
 
         this.StartCoroutine(() => canLand = true, 0.2f);
     }

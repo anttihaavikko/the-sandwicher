@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using AnttiStarterKit.Utils;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,38 +10,56 @@ public class Field : MonoBehaviour
     [SerializeField] private Enemy enemyPrefab;
 
     private List<Enemy> enemies = new();
+    
+    private int round = 1;
+
+    public bool HasEnemies => enemies.Any();
 
     private void Start()
     {
-        AddEnemy();
-        Invoke(nameof(AddEnemy), 10f);
+        AddEnemies();
+        Invoke(nameof(Increment), 10f);
     }
 
-    private void AddEnemy()
+    private void Increment()
     {
-        var pos = new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0);
-        var enemy = Instantiate(enemyPrefab, pos, Quaternion.identity);
-        enemy.Field = this;
-        enemies.Add(enemy);
-        ShowEnemyCount();
+        round++;
+        AddEnemies();
     }
 
-    private void ShowEnemyCount()
+    public void AddEnemies()
     {
-        Debug.Log($"Now {enemies.Count} enemies");
+        for (var i = 0; i < round; i++)
+        {
+            var pos = new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0);
+            var enemy = Instantiate(enemyPrefab, pos, Quaternion.identity);
+            enemy.Field = this;
+            enemies.Add(enemy);
+        }
     }
 
     private void Update()
     {
         if (DevKey.Down(KeyCode.A))
         {
-            AddEnemy();
+            AddEnemies();
         }
     }
 
     public void RemoveEnemy(Enemy enemy)
     {
+        var p = enemy.transform.position;
         enemies.Remove(enemy);
-        ShowEnemyCount();
+        PushEnemies(p);
+    }
+
+    public Vector3 GetClosestEnemyPosition(Vector3 from)
+    {
+        return enemies.Select(e => e.transform.position).OrderBy(p => Vector3.Distance(p, from)).First();
+    }
+
+    private void PushEnemies(Vector3 from)
+    {
+        enemies.ForEach(e => e.Push(from));
     }
 }
