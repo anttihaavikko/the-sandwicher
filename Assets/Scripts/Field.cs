@@ -103,6 +103,9 @@ public class Field : MonoBehaviour
         levelUpCooldown = 10f;
         level++;
         ShowLevel();
+
+        healAmount++;
+        health.Add(3);
     }
 
     private void ShowLevel()

@@ -63,6 +63,14 @@ namespace AnttiStarterKit.Game
         {
             return new HealthValue(cur, max);
         }
+
+        public void Add(int amount)
+        {
+            max += amount;
+            cur += amount;
+            changed.Invoke(Get());
+            UpdateDisplays();
+        }
     }
 
     public struct HealthValue
