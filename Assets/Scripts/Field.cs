@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AnttiStarterKit.Utils;
+using AnttiStarterKit.Visuals;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Field : MonoBehaviour
 {
+    [SerializeField] private EffectCamera cam;
     [SerializeField] private Enemy enemyPrefab;
 
     private List<Enemy> enemies = new();
@@ -61,5 +63,10 @@ public class Field : MonoBehaviour
     private void PushEnemies(Vector3 from)
     {
         enemies.ForEach(e => e.Push(from));
+    }
+
+    public void Effect(float amount)
+    {
+        cam.BaseEffect(amount);
     }
 }

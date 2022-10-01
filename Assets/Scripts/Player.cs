@@ -77,6 +77,8 @@ public class Player : MonoBehaviour
         canLand = false;
         launching = false;
         field.AddEnemies();
+        
+        field.Effect(0.1f);
 
         this.StartCoroutine(() => canLand = true, 0.2f);
     }

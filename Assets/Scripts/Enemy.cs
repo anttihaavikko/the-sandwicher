@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D col)
     {
+        Field.Effect(0.2f);
         EffectManager.AddEffects(new []{ 0, 1}, transform.position);
         Field.RemoveEnemy(this);
         Destroy(gameObject);
