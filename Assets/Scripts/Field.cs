@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using AnttiStarterKit.Animations;
+using AnttiStarterKit.Extensions;
+using AnttiStarterKit.Managers;
 using AnttiStarterKit.Utils;
 using AnttiStarterKit.Visuals;
 using UnityEngine;
@@ -14,6 +17,7 @@ public class Field : MonoBehaviour
     private List<Enemy> enemies = new();
     
     private int round;
+    private int multi = 1;
 
     public bool HasEnemies => enemies.Any();
 
@@ -51,8 +55,19 @@ public class Field : MonoBehaviour
     public void RemoveEnemy(Enemy enemy)
     {
         var p = enemy.transform.position;
+
+        var e = EffectManager.AddTextPopup((10 * multi).AsScore(), p + Vector3.up * 0.5f);
+        Tweener.RotateToBounceOut(e.transform, Quaternion.Euler(0, 0, Random.Range(-10f, 10f)), 0.2f);
+        
         enemies.Remove(enemy);
         PushEnemies(p);
+
+        multi++;
+    }
+
+    public void ResetMulti()
+    {
+        multi = 1;
     }
 
     public Vector3 GetClosestEnemyPosition(Vector3 from)

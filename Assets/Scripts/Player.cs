@@ -99,6 +99,7 @@ public class Player : MonoBehaviour
         
         field.Effect(0.1f);
         anim.SetTrigger(LandAnim);
+        field.ResetMulti();
 
         this.StartCoroutine(() => canLand = true, 0.2f);
     }
