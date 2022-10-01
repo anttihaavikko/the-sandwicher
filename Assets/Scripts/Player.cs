@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private Field field;
+    [SerializeField] private LineRenderer arrow;
 
     private Rigidbody2D body;
     private bool canLand = true;
@@ -31,16 +32,22 @@ public class Player : MonoBehaviour
 
     private void CheckLaunch()
     {
+        var mousePos = cam.ScreenToWorldPoint(Input.mousePosition).WhereZ(0);
+        
         if (Input.GetMouseButtonDown(0) && !launching)
         {
-            Launch();
+            Launch(mousePos);
         }
+
+        var p = transform.position;
+        arrow.SetPosition(0, p);
+        arrow.SetPosition(1, p * 0.25f + mousePos * 0.75f);
+        arrow.SetPosition(2, mousePos);
     }
 
-    private void Launch()
+    private void Launch(Vector3 mousePos)
     {
-        var pos = cam.ScreenToWorldPoint(Input.mousePosition).WhereZ(0);
-        var dir = pos - transform.position;
+        var dir = mousePos - transform.position;
         var amount = Mathf.Min(dir.magnitude * 5f, 10f);
         body.AddForce(dir.normalized * amount, ForceMode2D.Impulse);
         anim.SetTrigger(LaunchAnim);
@@ -61,7 +68,7 @@ public class Player : MonoBehaviour
         body.AddForce(diff.normalized * 30f, ForceMode2D.Force);
 
         var angle = body.rotation < Vector2.Angle(body.velocity, Vector2.zero) ? 1f : -1f;
-        body.AddTorque(angle, ForceMode2D.Force);
+        body.AddTorque(angle * 2f, ForceMode2D.Force);
     }
 
     public void RotateTo(float angle)
