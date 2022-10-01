@@ -31,9 +31,13 @@ public class LineDrawer : ObjectPool<LineRenderer>
         this.StartCoroutine(() => ReturnToPool(line), inDuration + outDuration);
     }
 
-    public void AddThunderLine(Vector3 from, Vector3 to, Color color, float width)
+    public void AddThunderLine(Vector3 from, Vector3 to, Color color, float width, float midOffset)
     {
-        AudioManager.Instance.PlayEffectFromCollection(thunderSounds, from, 1f);
+        if (thunderSounds)
+        {
+            AudioManager.Instance.PlayEffectFromCollection(thunderSounds, from, 1f);    
+        }
+        
         var line = Get(true);
         line.transform.localScale = Vector3.one;
         var mid = (from + to) * 0.5f;
@@ -41,8 +45,8 @@ public class LineDrawer : ObjectPool<LineRenderer>
         line.SetPositions(new []
         {
             from,
-            mid.RandomOffset(2f),
-            mid.RandomOffset(2f),
+            mid.RandomOffset(midOffset),
+            mid.RandomOffset(midOffset),
             to
         });
 

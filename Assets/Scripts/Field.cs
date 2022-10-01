@@ -24,7 +24,7 @@ public class Field : MonoBehaviour
     [SerializeField] private List<Appearer> levelUpAppearers;
     [SerializeField] private List<TMP_Text> waveTexts;
     [SerializeField] private LineDrawer lineDrawer;
-    [SerializeField] private Color fireColor;
+    [SerializeField] private Color fireColor, charmColor;
 
     private List<Enemy> enemies = new();
     
@@ -196,7 +196,9 @@ public class Field : MonoBehaviour
     private void BurnEnemy(Enemy e)
     {
         e.Burn();
-        lineDrawer.AddLine(player.transform.position, e.transform.position, fireColor, 0.5f, 0.1f, 0.1f);
+        var pos = e.transform.position;
+        lineDrawer.AddThunderLine(player.transform.position, pos, fireColor, 0.5f, 1f);
+        EffectManager.AddEffects(new []{ 0, 1, 3 }, pos);
     }
 
     private void Charm()
@@ -210,7 +212,13 @@ public class Field : MonoBehaviour
             .Take(amount)
             .ToList();
         
-        targets.ForEach(e => e.Charm());
+        targets.ForEach(CharmEnemy);
+    }
+
+    private void CharmEnemy(Enemy e)
+    {
+        e.Charm();
+        lineDrawer.AddThunderLine(player.transform.position, e.transform.position, charmColor, 0.2f, 1f);
     }
 
     public void AddMulti()

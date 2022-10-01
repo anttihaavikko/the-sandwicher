@@ -19864,6 +19864,7 @@ MonoBehaviour:
   - {fileID: 1300268022}
   lineDrawer: {fileID: 1380793800}
   fireColor: {r: 0.9137255, g: 0.6627451, b: 0.44705883, a: 0.29803923}
+  charmColor: {r: 0.8039216, g: 0.3254902, b: 0.20392157, a: 0.29803923}
 --- !u!4 &1952732104
 Transform:
   m_ObjectHideFlags: 0
