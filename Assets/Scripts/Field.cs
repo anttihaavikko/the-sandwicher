@@ -23,6 +23,8 @@ public class Field : MonoBehaviour
     [SerializeField] private List<TMP_Text> levelTexts;
     [SerializeField] private List<Appearer> levelUpAppearers;
     [SerializeField] private List<TMP_Text> waveTexts;
+    [SerializeField] private LineDrawer lineDrawer;
+    [SerializeField] private Color fireColor;
 
     private List<Enemy> enemies = new();
     
@@ -183,7 +185,18 @@ public class Field : MonoBehaviour
             .Take(amount)
             .ToList();
         
-        targets.ForEach(e => e.Burn());
+        targets.ForEach(BurnEnemy);
+
+        if (targets.Any())
+        {
+            cam.BaseEffect(0.3f);
+        }
+    }
+
+    private void BurnEnemy(Enemy e)
+    {
+        e.Burn();
+        lineDrawer.AddLine(player.transform.position, e.transform.position, fireColor, 0.5f, 0.1f, 0.1f);
     }
 
     private void Charm()

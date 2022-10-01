@@ -101,13 +101,14 @@ public class Player : MonoBehaviour
 
         if (!canLand) return;
         
+        field.Effect(0.1f);
+        
         field.Burn();
         
         canLand = false;
         launching = false;
         field.AddEnemies();
         
-        field.Effect(0.1f);
         anim.SetTrigger(LandAnim);
         field.ResetCombo();
         field.AddMulti();
