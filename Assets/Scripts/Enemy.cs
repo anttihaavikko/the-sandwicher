@@ -11,6 +11,8 @@ public class Enemy : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D col)
     {
+        var player = col.GetComponent<Player>();
+        if (!player || !player.IsAttacking) return;
         Field.Effect(0.2f);
         EffectManager.AddEffects(new []{ 0, 1}, transform.position);
         Field.RemoveEnemy(this);

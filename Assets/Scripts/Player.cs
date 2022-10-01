@@ -12,8 +12,11 @@ public class Player : MonoBehaviour
     private bool canLand = true;
     private bool launching;
     private Animator anim;
+    
     private static readonly int LandAnim = Animator.StringToHash("land");
     private static readonly int LaunchAnim = Animator.StringToHash("launch");
+
+    public bool IsAttacking => launching;
 
     private void Start()
     {

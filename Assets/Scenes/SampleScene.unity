@@ -2426,7 +2426,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000975d994e
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3155,8 +3155,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 741369316}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1318673815
+  m_SortingLayer: 1
   m_SortingOrder: 0
 --- !u!1 &755505564
 GameObject:
@@ -4043,8 +4043,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933803169}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1318673815
+  m_SortingLayer: 1
   m_SortingOrder: -1
 --- !u!1 &952218144
 GameObject:
@@ -6031,8 +6031,8 @@ SortingGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705194676}
   m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1318673815
+  m_SortingLayer: 1
   m_SortingOrder: 1
 --- !u!50 &1705194679
 Rigidbody2D:
