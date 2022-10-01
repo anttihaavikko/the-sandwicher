@@ -7,6 +7,7 @@ using AnttiStarterKit.Game;
 using AnttiStarterKit.Managers;
 using AnttiStarterKit.Utils;
 using AnttiStarterKit.Visuals;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -16,28 +17,33 @@ public class Field : MonoBehaviour
     [SerializeField] private Enemy enemyPrefab;
     [SerializeField] private ScoreDisplay scoreDisplay;
     [SerializeField] private Health health;
+    [SerializeField] private NumberBar expBar, enemyBar;
+    [SerializeField] private Player player;
+    [SerializeField] private Shaker multiShaker;
+    [SerializeField] private List<TMP_Text> levelTexts;
 
     private List<Enemy> enemies = new();
     
     private int round;
-    private int multi = 1;
+    private int combo = 1;
+    private int level = 1;
 
     private int healAmount = 3;
 
-    private float levelUpCooldown, enemyCooldown;
+    private float levelUpCooldown = 10f, enemyCooldown = 10f;
 
     public bool HasEnemies => enemies.Any();
 
     private void Start()
     {
         Increment();
+        ShowLevel();
     }
 
     private void Increment()
     {
         round++;
         AddEnemies();
-        Invoke(nameof(Increment), 10f);
     }
 
     public void AddEnemies()
@@ -57,14 +63,61 @@ public class Field : MonoBehaviour
         {
             AddEnemies();
         }
+
+        FillBars();
+    }
+
+    private void FillBars()
+    {
+        if (!player.gameObject.activeInHierarchy) return;
+        
+        UpdateBars();
+
+        expBar.SetValue((10f - levelUpCooldown) * 0.1f);
+        enemyBar.SetValue(enemyCooldown * 0.1f);
+    }
+
+    private void UpdateBars()
+    {
+        if (player.IsAttacking)
+        {
+            levelUpCooldown -= Time.deltaTime;
+            if (levelUpCooldown <= 0) LevelUp();
+            return;
+        }
+        
+        enemyCooldown -= Time.deltaTime;
+        if (enemyCooldown <= 0) TickEnemies();
+    }
+
+    private void TickEnemies()
+    {
+        enemyCooldown = 10f;
+        Increment();
+        scoreDisplay.ResetMulti();
+        multiShaker.Shake();
+    }
+
+    private void LevelUp()
+    {
+        levelUpCooldown = 10f;
+        level++;
+        ShowLevel();
+    }
+
+    private void ShowLevel()
+    {
+        var text = $"Level {level} Sandwicher";
+        levelTexts.ForEach(t => t.text = text);
     }
 
     public void RemoveEnemy(Enemy enemy)
     {
         var p = enemy.transform.position;
 
-        var amount = Mathf.RoundToInt(10 * Mathf.Pow(multi, 2));
-        var e = EffectManager.AddTextPopup(amount.AsScore(), p + Vector3.up * 0.5f);
+        var amount = 10 * combo;
+        var shown = amount * scoreDisplay.Multi;
+        var e = EffectManager.AddTextPopup(shown.AsScore(), p + Vector3.up * 0.5f);
         Tweener.RotateToBounceOut(e.transform, Quaternion.Euler(0, 0, Random.Range(-10f, 10f)), 0.2f);
         
         scoreDisplay.Add(amount);
@@ -72,14 +125,19 @@ public class Field : MonoBehaviour
         enemies.Remove(enemy);
         PushEnemies(p);
 
-        multi++;
+        combo++;
         
         health.TakeDamage<GameObject>(1);
     }
 
-    public void ResetMulti()
+    public void AddMulti()
     {
-        multi = 1;
+        scoreDisplay.AddMulti();
+    }
+
+    public void ResetCombo()
+    {
+        combo = 1;
     }
 
     public Vector3 GetClosestEnemyPosition(Vector3 from)
