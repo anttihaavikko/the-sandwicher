@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private bool launching;
     private Animator anim;
     private static readonly int LandAnim = Animator.StringToHash("land");
+    private static readonly int LaunchAnim = Animator.StringToHash("launch");
 
     private void Start()
     {
@@ -37,7 +38,9 @@ public class Player : MonoBehaviour
     {
         var pos = cam.ScreenToWorldPoint(Input.mousePosition).WhereZ(0);
         var dir = pos - transform.position;
-        body.AddForce(dir * 5f, ForceMode2D.Impulse);
+        var amount = Mathf.Min(dir.magnitude * 5f, 10f);
+        body.AddForce(dir.normalized * amount, ForceMode2D.Impulse);
+        anim.SetTrigger(LaunchAnim);
         launching = true;
     }
 
@@ -53,6 +56,9 @@ public class Player : MonoBehaviour
         var closest = field.GetClosestEnemyPosition(p);
         var diff = closest - p;
         body.AddForce(diff.normalized * 30f, ForceMode2D.Force);
+
+        var angle = body.rotation < Vector2.Angle(body.velocity, Vector2.zero) ? 1f : -1f;
+        body.AddTorque(angle, ForceMode2D.Force);
     }
 
     public void RotateTo(float angle)
