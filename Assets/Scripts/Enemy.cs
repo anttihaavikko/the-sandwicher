@@ -14,9 +14,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform visuals;
     [SerializeField] private GameObject charmEffect;
     [SerializeField] private List<SpriteRenderer> sprites;
-    [SerializeField] private Color charmColor;
+    [SerializeField] private Color charmColor, burnColor;
 
-    private bool charmed;
+    private bool charmed, burned;
     
     public Field Field { get; set; }
 
@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
     {
         var player = col.GetComponent<Player>();
         if (!player || !player.IsAttacking) return;
+        CancelInvoke(nameof(Crumble));
         Field.Effect(0.2f);
         EffectManager.AddEffects(new []{ 0, 1, 2, 3}, transform.position);
         Field.RemoveEnemy(this);
@@ -78,5 +79,20 @@ public class Enemy : MonoBehaviour
     public void Colorize(Color color)
     {
         sprites.ForEach(s => s.color *= color * color);
+    }
+
+    public void Burn()
+    {
+        if (burned) return;
+        burned = true;
+        Colorize(burnColor);
+        Invoke(nameof(Crumble), Random.Range(0.5f, 2f));
+    }
+
+    private void Crumble()
+    {
+        EffectManager.AddEffect(6, transform.position);
+        Field.RemoveEnemy(this, true);
+        Destroy(gameObject);
     }
 }

@@ -101,6 +101,8 @@ public class Player : MonoBehaviour
 
         if (!canLand) return;
         
+        field.Burn();
+        
         canLand = false;
         launching = false;
         field.AddEnemies();

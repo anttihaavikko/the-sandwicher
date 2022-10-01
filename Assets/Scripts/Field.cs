@@ -137,7 +137,7 @@ public class Field : MonoBehaviour
         waveTexts.ForEach(t => t.text = text);
     }
 
-    public void RemoveEnemy(Enemy enemy)
+    public void RemoveEnemy(Enemy enemy, bool passive = false)
     {
         var p = enemy.transform.position;
 
@@ -158,7 +158,23 @@ public class Field : MonoBehaviour
 
         combo++;
 
+        if (passive) return;
+        
         Charm();
+    }
+    
+    public void Burn()
+    {
+        var amount = stats[2];
+        if (amount < 1) return;
+
+        var p = player.transform.position;
+        var targets = enemies
+            .OrderBy(e => Vector3.Distance(e.transform.position, p))
+            .Take(amount)
+            .ToList();
+        
+        targets.ForEach(e => e.Burn());
     }
 
     private void Charm()
@@ -166,13 +182,13 @@ public class Field : MonoBehaviour
         var amount = stats[5];
         if (amount < 1) return;
 
-        var p = transform.position;
+        var p = player.transform.position;
         var targets = enemies
             .OrderBy(e => Vector3.Distance(e.transform.position, p))
             .Take(amount)
             .ToList();
         
-        targets.ForEach(t => t.Charm());
+        targets.ForEach(e => e.Charm());
     }
 
     public void AddMulti()

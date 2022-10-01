@@ -438,6 +438,7 @@ MonoBehaviour:
   - {fileID: 836665333495115526}
   - {fileID: 3503132966251799615}
   charmColor: {r: 0.98039216, g: 0.84705883, b: 0.8392157, a: 1}
+  burnColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
 --- !u!61 &2492621655894727664
 BoxCollider2D:
   m_ObjectHideFlags: 0
