@@ -68,7 +68,7 @@ namespace AnttiStarterKit.Game
         {
             max += amount;
             cur += amount;
-            changed.Invoke(Get());
+            changed?.Invoke(Get());
             UpdateDisplays();
         }
     }

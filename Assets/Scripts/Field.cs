@@ -21,18 +21,23 @@ public class Field : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private Shaker multiShaker;
     [SerializeField] private List<TMP_Text> levelTexts;
+    [SerializeField] private List<Appearer> levelUpAppearers;
+    [SerializeField] private List<TMP_Text> waveTexts;
 
     private List<Enemy> enemies = new();
     
     private int round;
     private int combo = 1;
     private int level = 1;
+    private bool leveling;
+    private bool locked;
 
     private int healAmount = 3;
 
     private float levelUpCooldown = 10f, enemyCooldown = 10f;
 
     public bool HasEnemies => enemies.Any();
+    public bool IsLocked => leveling || locked;
 
     private void Start()
     {
@@ -44,6 +49,7 @@ public class Field : MonoBehaviour
     {
         round++;
         AddEnemies();
+        ShowWave();
     }
 
     public void AddEnemies()
@@ -79,10 +85,12 @@ public class Field : MonoBehaviour
 
     private void UpdateBars()
     {
+        if (leveling) return;
+        
         if (player.IsAttacking)
         {
             levelUpCooldown -= Time.deltaTime;
-            if (levelUpCooldown <= 0) LevelUp();
+            if (levelUpCooldown <= 0) player.MarkForLevelUp();
             return;
         }
         
@@ -98,20 +106,33 @@ public class Field : MonoBehaviour
         multiShaker.Shake();
     }
 
-    private void LevelUp()
+    public void LevelUp()
     {
+        if (leveling) return;
+        
         levelUpCooldown = 10f;
         level++;
         ShowLevel();
-
-        healAmount++;
+        
         health.Add(3);
+        
+        levelUpAppearers[0].Show();
+        levelUpAppearers[1].ShowAfter(0.25f);
+        levelUpAppearers[2].ShowAfter(0.5f);
+
+        leveling = true;
     }
 
     private void ShowLevel()
     {
         var text = $"Level {level} Sandwicher";
         levelTexts.ForEach(t => t.text = text);
+    }
+    
+    private void ShowWave()
+    {
+        var text = $"Wave {round}";
+        waveTexts.ForEach(t => t.text = text);
     }
 
     public void RemoveEnemy(Enemy enemy)
@@ -161,5 +182,21 @@ public class Field : MonoBehaviour
     public void Heal()
     {
         health.Heal(healAmount);
+    }
+
+    public void Pick(int index)
+    {
+        if (!leveling) return;
+
+        leveling = false;
+        locked = true;
+        
+        healAmount++;
+        
+        levelUpAppearers[2].Hide();
+        levelUpAppearers[1].HideWithDelay(0.1f);
+        levelUpAppearers[0].HideWithDelay(0.2f);
+
+        this.StartCoroutine(() => locked = false, 0.1f);
     }
 }

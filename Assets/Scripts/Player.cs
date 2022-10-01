@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     private bool canLand = true;
     private bool launching;
     private Animator anim;
+
+    private bool willLevel;
     
     private static readonly int LandAnim = Animator.StringToHash("land");
     private static readonly int LaunchAnim = Animator.StringToHash("launch");
@@ -51,6 +53,8 @@ public class Player : MonoBehaviour
 
     private void Launch(Vector3 mousePos)
     {
+        if (field.IsLocked) return;
+        
         var dir = mousePos - transform.position;
         var amount = Mathf.Min(dir.magnitude * 5f, 10f);
         body.AddForce(dir.normalized * amount, ForceMode2D.Impulse);
@@ -107,6 +111,12 @@ public class Player : MonoBehaviour
         field.AddMulti();
 
         this.StartCoroutine(() => canLand = true, 0.2f);
+
+        if (willLevel)
+        {
+            willLevel = false;
+            field.LevelUp();
+        }
     }
 
     public void Die()
@@ -124,5 +134,10 @@ public class Player : MonoBehaviour
     {
         EffectManager.AddEffect(5, transform.position, body.rotation);
         field.Heal();
+    }
+
+    public void MarkForLevelUp()
+    {
+        willLevel = true;
     }
 }
