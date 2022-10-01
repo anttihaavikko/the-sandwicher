@@ -1,6 +1,8 @@
 using System;
 using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
+using AnttiStarterKit.Game;
+using AnttiStarterKit.Managers;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -8,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Camera cam;
     [SerializeField] private Field field;
     [SerializeField] private LineRenderer arrow;
+    [SerializeField] private GameObject extras, bits;
 
     private Rigidbody2D body;
     private bool canLand = true;
@@ -102,5 +105,22 @@ public class Player : MonoBehaviour
         field.ResetMulti();
 
         this.StartCoroutine(() => canLand = true, 0.2f);
+    }
+
+    public void Die()
+    {
+        field.Effect(0.5f);
+        var pos = transform.position;
+        EffectManager.AddEffects(new []{ 0, 1, 2, 3}, pos);
+        gameObject.SetActive(false);
+        extras.SetActive(false);
+        bits.transform.position = pos;
+        bits.SetActive(true);
+    }
+
+    public void Heal()
+    {
+        EffectManager.AddEffect(5, transform.position, body.rotation);
+        field.Heal();
     }
 }

@@ -406,7 +406,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 252881525
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: 50
 --- !u!95 &6376263040527139002
 Animator:
   serializedVersion: 4

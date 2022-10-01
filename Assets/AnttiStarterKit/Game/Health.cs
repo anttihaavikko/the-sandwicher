@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AnttiStarterKit.Animations;
 using TMPro;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace AnttiStarterKit.Game
     public class Health
     {
         [SerializeField] private int cur = 10, max = 10;
-        [SerializeField] private TMP_Text display;
+        [SerializeField] private List<TMP_Text> display;
         [SerializeField] private Transform bar;
         
         [SerializeField] private UnityEvent onDeath;
@@ -50,10 +51,7 @@ namespace AnttiStarterKit.Game
 
         private void UpdateDisplays()
         {
-            if (display)
-            {
-                display.text = $"{cur}/{max}";
-            }
+            display.ForEach(d => d.text = $"{cur}/{max}");
 
             if (bar)
             {

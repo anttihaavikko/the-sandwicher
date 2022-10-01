@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
+using AnttiStarterKit.Game;
 using AnttiStarterKit.Managers;
 using AnttiStarterKit.Utils;
 using AnttiStarterKit.Visuals;
@@ -13,11 +14,17 @@ public class Field : MonoBehaviour
 {
     [SerializeField] private EffectCamera cam;
     [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private ScoreDisplay scoreDisplay;
+    [SerializeField] private Health health;
 
     private List<Enemy> enemies = new();
     
     private int round;
     private int multi = 1;
+
+    private int healAmount = 3;
+
+    private float levelUpCooldown, enemyCooldown;
 
     public bool HasEnemies => enemies.Any();
 
@@ -60,10 +67,14 @@ public class Field : MonoBehaviour
         var e = EffectManager.AddTextPopup(amount.AsScore(), p + Vector3.up * 0.5f);
         Tweener.RotateToBounceOut(e.transform, Quaternion.Euler(0, 0, Random.Range(-10f, 10f)), 0.2f);
         
+        scoreDisplay.Add(amount);
+        
         enemies.Remove(enemy);
         PushEnemies(p);
 
         multi++;
+        
+        health.TakeDamage<GameObject>(1);
     }
 
     public void ResetMulti()
@@ -84,5 +95,10 @@ public class Field : MonoBehaviour
     public void Effect(float amount)
     {
         cam.BaseEffect(amount);
+    }
+
+    public void Heal()
+    {
+        health.Heal(healAmount);
     }
 }
