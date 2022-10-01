@@ -50,7 +50,7 @@ public class Field : MonoBehaviour
     {
         for (var i = 0; i < round; i++)
         {
-            var pos = new Vector3(Random.Range(-5f, 5f), Random.Range(-5f, 5f), 0);
+            var pos = new Vector3(Random.Range(-5f, 5f), Random.Range(-3f, 3f), 0);
             var enemy = Instantiate(enemyPrefab, pos, Quaternion.identity);
             enemy.Field = this;
             enemies.Add(enemy);

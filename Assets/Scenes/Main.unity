@@ -9485,6 +9485,7 @@ GameObject:
   - component: {fileID: 741369322}
   - component: {fileID: 741369323}
   - component: {fileID: 741369324}
+  - component: {fileID: 741369325}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -9615,6 +9616,7 @@ MonoBehaviour:
   arrow: {fileID: 671979631}
   extras: {fileID: 845461236}
   bits: {fileID: 2063568795}
+  flasher: {fileID: 0}
 --- !u!95 &741369322
 Animator:
   serializedVersion: 4
@@ -9674,6 +9676,56 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &741369325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741369316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96dfb8bc5d3543cb82230cd858a5415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 2113459961}
+  - {fileID: 1001684200}
+  - {fileID: 1769426112}
+  - {fileID: 739968403}
+  - {fileID: 466496811}
+  - {fileID: 952218146}
+  - {fileID: 775440979}
+  - {fileID: 317244557}
+  - {fileID: 933803171}
+  - {fileID: 996922815}
+  - {fileID: 2116157949}
+  - {fileID: 997637815}
+  - {fileID: 921822407}
+  - {fileID: 211913150}
+  lines:
+  - {fileID: 717051971}
+  - {fileID: 1306530337}
+  - {fileID: 576800399}
+  - {fileID: 280664454}
+  - {fileID: 1747577841}
+  - {fileID: 1318369915}
+  spritesNeedingShader:
+  - {fileID: 873567430}
+  - {fileID: 1751399076}
+  - {fileID: 339612227}
+  - {fileID: 173310306}
+  - {fileID: 293576625}
+  - {fileID: 1632822114}
+  - {fileID: 831392363}
+  - {fileID: 917117711}
+  - {fileID: 145992619}
+  - {fileID: 1161934298}
+  - {fileID: 1907367966}
+  - {fileID: 2093351362}
+  - {fileID: 677378243}
+  whiteMaterial: {fileID: 2100000, guid: 3f367f67069ac4cfc878f5e675f3fe3f, type: 2}
+  duration: 0.1
 --- !u!1 &749795600
 GameObject:
   m_ObjectHideFlags: 0
@@ -17230,7 +17282,19 @@ MonoBehaviour:
           m_CallState: 2
     onDamage:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 741369325}
+          m_TargetAssemblyTypeName: Flasher, Assembly-CSharp
+          m_MethodName: Flash
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   expBar: {fileID: 546455813}
   enemyBar: {fileID: 1948683915}
   player: {fileID: 741369321}

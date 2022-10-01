@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Field field;
     [SerializeField] private LineRenderer arrow;
     [SerializeField] private GameObject extras, bits;
+    [SerializeField] private Flasher flasher;
 
     private Rigidbody2D body;
     private bool canLand = true;
