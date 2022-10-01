@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
         var p = transform.position;
         var closest = field.GetClosestEnemyPosition(p);
         var diff = closest - p;
-        body.AddForce(diff.normalized * 30f, ForceMode2D.Force);
+        body.AddForce(diff.normalized * field.HomingStrength, ForceMode2D.Force);
 
         var angle = body.rotation < Vector2.Angle(body.velocity, Vector2.zero) ? 1f : -1f;
         body.AddTorque(angle * 2f, ForceMode2D.Force);

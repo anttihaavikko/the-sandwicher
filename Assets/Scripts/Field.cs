@@ -31,13 +31,15 @@ public class Field : MonoBehaviour
     private int level = 1;
     private bool leveling;
     private bool locked;
-
-    private int healAmount = 3;
+    
+    private int[] stats = new int[6];
 
     private float levelUpCooldown = 10f, enemyCooldown = 10f;
 
     public bool HasEnemies => enemies.Any();
     public bool IsLocked => leveling || locked;
+
+    public float HomingStrength => 20f;
 
     private void Start()
     {
@@ -181,7 +183,7 @@ public class Field : MonoBehaviour
 
     public void Heal()
     {
-        health.Heal(healAmount);
+        health.Heal(SkillBox.BaseHeal + stats[0] * SkillBox.HealPerAlchemyLevel);
     }
 
     public void Pick(int index)
@@ -190,9 +192,9 @@ public class Field : MonoBehaviour
 
         leveling = false;
         locked = true;
-        
-        healAmount++;
-        
+
+        stats[index]++;
+
         levelUpAppearers[2].Hide();
         levelUpAppearers[1].HideWithDelay(0.1f);
         levelUpAppearers[0].HideWithDelay(0.2f);
