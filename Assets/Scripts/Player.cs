@@ -11,9 +11,12 @@ public class Player : MonoBehaviour
     private Rigidbody2D body;
     private bool canLand = true;
     private bool launching;
+    private Animator anim;
+    private static readonly int LandAnim = Animator.StringToHash("land");
 
     private void Start()
     {
+        anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
     }
 
@@ -79,6 +82,7 @@ public class Player : MonoBehaviour
         field.AddEnemies();
         
         field.Effect(0.1f);
+        anim.SetTrigger(LandAnim);
 
         this.StartCoroutine(() => canLand = true, 0.2f);
     }
