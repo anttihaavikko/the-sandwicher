@@ -151,7 +151,8 @@ public class Field : MonoBehaviour
             health.TakeDamage<GameObject>(enemy.IsChamp ? round : 1);
         }
 
-        var amount = 10 * combo;
+        var mod = enemy.IsChamp ? round : 1;
+        var amount = 10 * combo * mod;
         var shown = amount * scoreDisplay.Multi;
         var e = EffectManager.AddTextPopup(shown.AsScore(), p + Vector3.up * 0.5f);
         Tweener.RotateToBounceOut(e.transform, Quaternion.Euler(0, 0, Random.Range(-10f, 10f)), 0.2f);
