@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using AnttiStarterKit.Extensions;
 using UnityEngine;
 
 namespace Leaderboards
@@ -43,7 +44,7 @@ namespace Leaderboards
             data.scores.ToList().ForEach(entry =>
             {
                 var row = Instantiate(rowPrefab, transform);
-                row.Setup(entry.position + ". " + entry.name, entry.score, entry.locale);
+                row.Setup(entry.position + ". " + entry.name, int.Parse(entry.score).AsScore(), entry.locale);
             });
         }
 

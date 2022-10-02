@@ -7,6 +7,7 @@ using AnttiStarterKit.Game;
 using AnttiStarterKit.Managers;
 using AnttiStarterKit.Utils;
 using AnttiStarterKit.Visuals;
+using Leaderboards;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -28,6 +29,7 @@ public class Field : MonoBehaviour
     [SerializeField] private Appearer shield;
     [SerializeField] private GameObject gameOverStuff;
     [SerializeField] private List<TMP_Text> deathReasonTexts;
+    [SerializeField] private ScoreManager scoreManager;
 
     private List<Enemy> enemies = new();
     
@@ -343,6 +345,7 @@ public class Field : MonoBehaviour
         var reason = GetDeathReason();
         deathReasonTexts.ForEach(t => t.text = reason);
         gameOverStuff.SetActive(true);
+        SubmitScore();
     }
 
     private string GetDeathReason()
@@ -387,6 +390,11 @@ public class Field : MonoBehaviour
             "You've got much to learn..."
         }.Random();
     }
-    
-    
+
+    private void SubmitScore()
+    {
+        var playerName = PlayerPrefs.GetString("PlayerName", "Antti");
+        var playerId = PlayerPrefs.GetString("PlayerId", "123");
+        scoreManager.SubmitScore(playerName, scoreDisplay.Total, round, playerId);
+    }
 }

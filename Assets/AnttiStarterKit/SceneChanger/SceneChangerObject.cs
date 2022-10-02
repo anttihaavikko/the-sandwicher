@@ -14,4 +14,9 @@ public class SceneChangerObject : MonoBehaviour
         SceneChanger.Instance.blinders.Close();
         this.StartCoroutine(() => Application.Quit(), 1f);
     }
+
+    public void ToMainOrName()
+    {
+        ChangeScene(PlayerPrefs.HasKey("PlayerName") ? "Main" : "name");
+    }
 }

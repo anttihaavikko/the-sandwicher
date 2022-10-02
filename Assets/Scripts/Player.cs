@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D potionPrefab;
     [SerializeField] private Transform potionSpawnPos;
     [SerializeField] private Transform feetPos;
+    [SerializeField] private bool demo = false;
     
     private Rigidbody2D body;
     private bool canLand = true;
@@ -40,6 +41,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (demo) return;
         CheckLaunch();
     }
 
