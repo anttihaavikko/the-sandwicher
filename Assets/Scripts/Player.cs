@@ -189,10 +189,12 @@ public class Player : MonoBehaviour
     {
         var pot = CreatePotion();
         var t = pot.transform;
-        t.position = potionSpawnPos.position;
+        var pos = potionSpawnPos.position;
+        t.position = pos;
         t.rotation = potionSpawnPos.rotation;
         pot.AddForce(Vector3.zero.RandomOffset(0.5f), ForceMode2D.Impulse);
         potions.Enqueue(pot);
+        AudioManager.Instance.PlayEffectFromCollection(11, pos);
     }
 
     private Rigidbody2D CreatePotion()
