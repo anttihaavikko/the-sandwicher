@@ -149,14 +149,14 @@ public class Field : MonoBehaviour
     public void RemoveEnemy(Enemy enemy, bool passive = false)
     {
         var p = enemy.transform.position;
+        var dmg = DamageFor(enemy);
 
         if (!enemy.IsCharmed)
         {
-            Damage(enemy.IsChamp ? round : 1);
+            Damage(dmg);
         }
-
-        var mod = enemy.IsChamp ? round : 1;
-        var amount = 10 * combo * mod;
+        
+        var amount = 10 * combo * dmg;
         var shown = amount * scoreDisplay.Multi;
         var e = EffectManager.AddTextPopup(shown.AsScore(), p + Vector3.up * 0.5f);
         Tweener.RotateToBounceOut(e.transform, Quaternion.Euler(0, 0, Random.Range(-10f, 10f)), 0.2f);
@@ -258,7 +258,7 @@ public class Field : MonoBehaviour
 
     private void PushEnemies(Vector3 from)
     {
-        enemies.ForEach(e => e.Push(from));
+        enemies.ForEach(e => e.Push(from, 2f, ForceMode2D.Impulse));
     }
 
     public void Effect(float amount)
@@ -291,5 +291,23 @@ public class Field : MonoBehaviour
         levelUpAppearers[0].HideWithDelay(0.2f);
 
         this.StartCoroutine(() => locked = false, 0.1f);
+    }
+
+    public void Push()
+    {
+        if (stats[1] < 1) return;
+        var targets = enemies.Where(e => DamageFor(e) >= health.Current).ToList();
+        targets.ForEach(Push);
+    }
+    
+    private void Push(Enemy e)
+    {
+        var p = player.transform.position;
+        e.Push(p, 7f * stats[1], ForceMode2D.Force);
+    }
+
+    private int DamageFor(Enemy e)
+    {
+        return e.IsChamp ? round : 1;
     }
 }

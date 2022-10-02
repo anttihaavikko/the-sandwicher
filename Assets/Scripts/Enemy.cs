@@ -64,12 +64,12 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Push(Vector3 from)
+    public void Push(Vector3 from, float amount, ForceMode2D mode)
     {
         var diff = transform.position - from;
         if (diff.magnitude > 4f) return;
         var inversed = diff.normalized * 1 / diff.magnitude;
-        body.AddForce(inversed * 2f, ForceMode2D.Impulse);
+        body.AddForce(inversed * amount, mode);
     }
 
     public void Charm()

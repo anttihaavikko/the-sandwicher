@@ -49,6 +49,11 @@ public class Player : MonoBehaviour
         arrow.SetPosition(0, p);
         arrow.SetPosition(1, p * 0.25f + mousePos * 0.75f);
         arrow.SetPosition(2, mousePos);
+
+        if (launching)
+        {
+            field.Push();
+        }
     }
 
     private void Launch(Vector3 mousePos)
