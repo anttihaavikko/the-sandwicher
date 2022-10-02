@@ -44,7 +44,7 @@ public class SkillBox : MonoBehaviour
     {
         return skill switch
         {
-            0 => $"Potions heal for {BaseHeal + level * HealPerAlchemyLevel} HP.\nQuaffed when after landing.",
+            0 => $"Potions heal for {BaseHeal + level * HealPerAlchemyLevel} HP.\nQuaffed after landing.",
             1 => level > 1 ? 
                 "Even stronger push on enemies when low on HP." : 
                 "Push enemies away when low on HP.",
