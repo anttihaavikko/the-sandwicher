@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.022215646"
-     inkscape:cx="4324.6092"
-     inkscape:cy="-2072.4345"
+     inkscape:zoom="0.062835336"
+     inkscape:cx="20157.817"
+     inkscape:cy="3391.9894"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
@@ -3125,6 +3125,15 @@ IXyKBUR60S4hISEhISEhIWHcMCFWihMhTkhISEhISEhIGE/8f8eZOTA67G0FAAAAAElFTkSuQmCC
        d="m -2715.928,-378.96671 c 37.8967,-8.42148 560.0286,-501.07817 560.0286,-501.07817"
        id="path2680"
        sodipodi:nodetypes="cc"
+       inkscape:export-xdpi="25"
+       inkscape:export-ydpi="25" />
+    <ellipse
+       style="fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:79.9999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:47.2441;stroke-opacity:1;paint-order:markers fill stroke"
+       id="path3151"
+       cx="4495.1953"
+       cy="978.83453"
+       rx="51.360901"
+       ry="42.42857"
        inkscape:export-xdpi="25"
        inkscape:export-ydpi="25" />
   </g>
