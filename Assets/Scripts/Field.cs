@@ -105,7 +105,7 @@ public class Field : MonoBehaviour
             return;
         }
         
-        enemyCooldown -= Time.deltaTime;
+        enemyCooldown -= Time.deltaTime * Mathf.Pow(0.8f, stats[3]);
         if (enemyCooldown <= 0) TickEnemies();
     }
 

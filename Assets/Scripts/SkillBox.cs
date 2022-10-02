@@ -51,7 +51,7 @@ public class SkillBox : MonoBehaviour
             2 => level > 1 ? 
                 $"Burn {level} closest enemies when landing from a jump." : 
                 "Burn closest enemy when landing from a jump.",
-            3 => $"Enemy wave meter fills {level * SlowAmountPerLevel}% more slowly.",
+            3 => $"Enemy wave meter fills {GetSlow()}% more slowly.",
             4 => level > 1 ? 
                 $"Cast a shield that protects you from a {level} killing blows." :
                 "Cast a shield that protects you from a killing blow.",
@@ -60,5 +60,10 @@ public class SkillBox : MonoBehaviour
                 "Charm closest enemy on kill. Charmed enemies will not retaliate.",
             _ => "Unknown"
         };
+    }
+
+    private int GetSlow()
+    {
+        return Mathf.RoundToInt(100 * (1 - Mathf.Pow(0.8f, level)));
     }
 }
