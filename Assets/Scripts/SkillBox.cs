@@ -56,8 +56,8 @@ public class SkillBox : MonoBehaviour
                 $"Cast a shield that protects you from a {level} killing blows." :
                 "Cast a shield that protects you from a killing blow.",
             5 => level > 1 ? 
-                $"Charm {level} closest enemies on kill. Charmed enemies will not retaliate." : 
-                "Charm closest enemy on kill. Charmed enemies will not retaliate.",
+                $"Charm {level} closest enemies on kill. They will not retaliate." : 
+                "Charm closest enemy on kill. They will not retaliate.",
             _ => "Unknown"
         };
     }
