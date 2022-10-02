@@ -13,14 +13,14 @@ public class Player : MonoBehaviour
     [SerializeField] private LineRenderer arrow;
     [SerializeField] private GameObject extras, bits;
     [SerializeField] private Flasher flasher;
-    [SerializeField] private GameObject potionPrefab;
+    [SerializeField] private Rigidbody2D potionPrefab;
     [SerializeField] private Transform potionSpawnPos;
 
     private Rigidbody2D body;
     private bool canLand = true;
     private bool launching;
     private Animator anim;
-    private readonly Queue<GameObject> potions = new();
+    private readonly Queue<Rigidbody2D> potions = new();
 
     private bool willLevel;
     
@@ -156,12 +156,14 @@ public class Player : MonoBehaviour
     private void DropPotion()
     {
         var pot = CreatePotion();
-        pot.transform.position = potionSpawnPos.position;
-        pot.transform.rotation = potionSpawnPos.rotation;
+        var t = pot.transform;
+        t.position = potionSpawnPos.position;
+        t.rotation = potionSpawnPos.rotation;
+        pot.AddForce(Vector3.zero.RandomOffset(0.5f), ForceMode2D.Impulse);
         potions.Enqueue(pot);
     }
 
-    private GameObject CreatePotion()
+    private Rigidbody2D CreatePotion()
     {
         return potions.Count > 20 ? 
             potions.Dequeue() : 

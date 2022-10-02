@@ -10739,7 +10739,7 @@ MonoBehaviour:
   extras: {fileID: 845461236}
   bits: {fileID: 2063568795}
   flasher: {fileID: 0}
-  potionPrefab: {fileID: 1719372775986259916, guid: 45abf33f6de6543d5950610ab921f154, type: 3}
+  potionPrefab: {fileID: 1719372775986259917, guid: 45abf33f6de6543d5950610ab921f154, type: 3}
   potionSpawnPos: {fileID: 689937582}
 --- !u!95 &741369322
 Animator:
@@ -17813,7 +17813,7 @@ Transform:
   - {fileID: 1359595162}
   m_Father: {fileID: 576800397}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -7849.574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -8209.574}
 --- !u!114 &1598484571
 MonoBehaviour:
   m_ObjectHideFlags: 0
