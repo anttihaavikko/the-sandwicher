@@ -149,6 +149,7 @@ public class Player : MonoBehaviour
         extras.SetActive(false);
         bits.transform.position = pos;
         bits.SetActive(true);
+        field.GameOver();
     }
 
     public void Heal()

@@ -26,6 +26,8 @@ public class Field : MonoBehaviour
     [SerializeField] private LineDrawer lineDrawer;
     [SerializeField] private Color fireColor, charmColor;
     [SerializeField] private Appearer shield;
+    [SerializeField] private GameObject gameOverStuff;
+    [SerializeField] private List<TMP_Text> deathReasonTexts;
 
     private List<Enemy> enemies = new();
     
@@ -35,6 +37,7 @@ public class Field : MonoBehaviour
     private bool leveling;
     private bool locked;
     private int shields;
+    private bool hasHealed, killedByChamp;
     
     private int[] stats = new int[6];
 
@@ -190,6 +193,11 @@ public class Field : MonoBehaviour
 
             return;
         }
+
+        if (health.Current <= amount && amount > 1)
+        {
+            killedByChamp = true;
+        }
         
         health.TakeDamage<GameObject>(amount);
     }
@@ -268,6 +276,8 @@ public class Field : MonoBehaviour
 
     public void Heal()
     {
+        hasHealed = true;
+        
         health.Heal(SkillBox.BaseHeal + stats[0] * SkillBox.HealPerAlchemyLevel);
 
         if (stats[4] > 0)
@@ -310,4 +320,56 @@ public class Field : MonoBehaviour
     {
         return e.IsChamp ? round : 1;
     }
+
+    public void GameOver()
+    {
+        var reason = GetDeathReason();
+        deathReasonTexts.ForEach(t => t.text = reason);
+        gameOverStuff.SetActive(true);
+    }
+
+    private string GetDeathReason()
+    {
+        if (scoreDisplay.Total >= 100000)
+        {
+            return new []
+            {
+                "Wasemir would be proud of you...",
+                "Superb job!"
+            }.Random();
+        }
+        
+        if (!hasHealed) return new []
+        {
+            "Try taking it more slowly to use potions...",
+            "Breadalt will quaff a potion after landing...",
+            "Maybe try a less aggressive approach..."
+        }.Random();
+        
+        if (killedByChamp) return new []
+        {
+            "The champion enemies can be dangerous!",
+            "Take it easy around the champion enemies!",
+            "Be cautious of the champion enemies!"
+        }.Random();
+
+        if (scoreDisplay.Total >= 10000)
+        {
+            return new []
+            {
+                "Decent try...",
+                "Nicely done...",
+                "Getting better..."
+            }.Random();
+        }
+
+        return new []
+        {
+            "You can do better!",
+            "I had high expectations of you...",
+            "You've got much to learn..."
+        }.Random();
+    }
+    
+    
 }
