@@ -70,7 +70,7 @@ public class Field : MonoBehaviour
             enemy.Field = this;
             enemies.Add(enemy);
 
-            if (round > 3 && (enemies.Count > 70 && Random.value < 0.5f || Random.value < 0.1f))
+            if (round > 3 && ((enemies.Count > 70 || round > 10) && Random.value < 0.5f || Random.value < 0.1f))
             {
                 enemy.Champify();
             }
