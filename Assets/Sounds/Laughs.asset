@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
   m_Name: Laughs
   m_EditorClassIdentifier: 
-  volume: 1
+  volume: 1.2
   clips:
   - {fileID: 8300000, guid: e387240f8aba640b092c18abd492081a, type: 3}
   - {fileID: 8300000, guid: 1d0a74e9ad1b748fa9530f23b62eda82, type: 3}
