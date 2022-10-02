@@ -932,6 +932,7 @@ GameObject:
   - component: {fileID: 142529602}
   - component: {fileID: 142529604}
   - component: {fileID: 142529605}
+  - component: {fileID: 142529606}
   m_Layer: 12
   m_Name: Sword Back
   m_TagString: Untagged
@@ -1067,6 +1068,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 0
   max: 360
+--- !u!114 &142529606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 142529600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c37d28da1945e4b89e7b0c264e3809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: {fileID: 11400000, guid: c915a0ed064034863a438dd25accf7b2, type: 2}
+  threshold: 2
+  volume: 0.75
+  maxAmount: 3
 --- !u!1 &145992617
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,13 +2276,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00700a32f42f24efe9ea87026ad7216c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 114852473009967456, guid: 3d15b96e9a8fd4b68902e126f7cce22b, type: 3}
   curMusic: {fileID: 1360280976}
   musics:
   - {fileID: 1360280976}
   volume: 0.5
   effects: []
-  soundCollections: []
+  soundCollections:
+  - {fileID: 11400000, guid: 4502ecf0cdd3c4083b9a77a7f2ef9711, type: 2}
+  - {fileID: 11400000, guid: 90c0c71efd8764e30bb69a50078f5681, type: 2}
+  - {fileID: 11400000, guid: c915a0ed064034863a438dd25accf7b2, type: 2}
+  - {fileID: 11400000, guid: e1f6b71a59ce44cf0945fd0653bb0a29, type: 2}
+  - {fileID: 11400000, guid: a4589b80cf62a424cb84b4848e0bf316, type: 2}
+  - {fileID: 11400000, guid: ac47a41d025204e6a8b76efb6acc0632, type: 2}
+  - {fileID: 11400000, guid: 2aa8bd3f1db1c4c309af498a93eae4f8, type: 2}
+  - {fileID: 11400000, guid: 1dc52a025d0c74ee1b3902d57452e1db, type: 2}
+  - {fileID: 11400000, guid: 75437e8594b8143199f131ed6e0e9e69, type: 2}
+  - {fileID: 11400000, guid: 2e8b7f325d9684c29aeaf093ffb0ff8a, type: 2}
 --- !u!4 &245397263
 Transform:
   m_ObjectHideFlags: 0
@@ -9958,6 +9985,7 @@ GameObject:
   - component: {fileID: 464157566}
   - component: {fileID: 464157567}
   - component: {fileID: 464157568}
+  - component: {fileID: 464157569}
   m_Layer: 12
   m_Name: amulet (1)
   m_TagString: Untagged
@@ -10093,6 +10121,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 0
   max: 360
+--- !u!114 &464157569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464157563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c37d28da1945e4b89e7b0c264e3809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: {fileID: 11400000, guid: 1dc52a025d0c74ee1b3902d57452e1db, type: 2}
+  threshold: 2
+  volume: 0.75
+  maxAmount: 3
 --- !u!1 &466496809
 GameObject:
   m_ObjectHideFlags: 0
@@ -14892,6 +14936,7 @@ GameObject:
   - component: {fileID: 749795602}
   - component: {fileID: 749795604}
   - component: {fileID: 749795605}
+  - component: {fileID: 749795606}
   m_Layer: 12
   m_Name: scabbard
   m_TagString: Untagged
@@ -15027,6 +15072,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 0
   max: 360
+--- !u!114 &749795606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749795600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c37d28da1945e4b89e7b0c264e3809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: {fileID: 11400000, guid: e1f6b71a59ce44cf0945fd0653bb0a29, type: 2}
+  threshold: 2
+  volume: 0.75
+  maxAmount: 3
 --- !u!1 &755505564
 GameObject:
   m_ObjectHideFlags: 0
@@ -15431,6 +15492,7 @@ GameObject:
   - component: {fileID: 776314005}
   - component: {fileID: 776314007}
   - component: {fileID: 776314008}
+  - component: {fileID: 776314009}
   m_Layer: 12
   m_Name: Sword Front
   m_TagString: Untagged
@@ -15566,6 +15628,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 0
   max: 360
+--- !u!114 &776314009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776314003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c37d28da1945e4b89e7b0c264e3809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: {fileID: 11400000, guid: c915a0ed064034863a438dd25accf7b2, type: 2}
+  threshold: 2
+  volume: 0.75
+  maxAmount: 3
 --- !u!1 &777003866
 GameObject:
   m_ObjectHideFlags: 0
@@ -18765,6 +18843,7 @@ GameObject:
   - component: {fileID: 1027952296}
   - component: {fileID: 1027952295}
   - component: {fileID: 1027952294}
+  - component: {fileID: 1027952297}
   m_Layer: 12
   m_Name: Tunic
   m_TagString: Untagged
@@ -18959,6 +19038,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1027952297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027952292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c37d28da1945e4b89e7b0c264e3809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: {fileID: 11400000, guid: 2e8b7f325d9684c29aeaf093ffb0ff8a, type: 2}
+  threshold: 2
+  volume: 0.75
+  maxAmount: 3
 --- !u!1 &1033547293
 GameObject:
   m_ObjectHideFlags: 0
@@ -43826,6 +43921,7 @@ GameObject:
   - component: {fileID: 2144174431}
   - component: {fileID: 2144174433}
   - component: {fileID: 2144174434}
+  - component: {fileID: 2144174435}
   m_Layer: 12
   m_Name: scabbard (1)
   m_TagString: Untagged
@@ -43961,6 +44057,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: 0
   max: 360
+--- !u!114 &2144174435
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144174429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26c37d28da1945e4b89e7b0c264e3809, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: {fileID: 11400000, guid: e1f6b71a59ce44cf0945fd0653bb0a29, type: 2}
+  threshold: 2
+  volume: 0.75
+  maxAmount: 3
 --- !u!1001 &2766352063286922106
 PrefabInstance:
   m_ObjectHideFlags: 0

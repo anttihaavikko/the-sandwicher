@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Thuds
+  m_EditorClassIdentifier: 
+  volume: 0.5
+  clips:
+  - {fileID: 8300000, guid: 41eaf16eaa3ca461bab4116662fe9019, type: 3}
+  - {fileID: 8300000, guid: c60b93c3b2958436e8b2a7a948709f1c, type: 3}
+  - {fileID: 8300000, guid: 0b1cdb93df8914bb09dad89036065588, type: 3}
+  - {fileID: 8300000, guid: 564abe60a3ef74823ba1e81b8bdcc0e5, type: 3}
+  - {fileID: 8300000, guid: 0da7a94246cf640689b06e5e6c0dbcf6, type: 3}
+  - {fileID: 8300000, guid: 4d55e4cc696e04d0b90de30966f3743c, type: 3}
+  - {fileID: 8300000, guid: 250cb9da8fb7544f2b65304a25d97200, type: 3}

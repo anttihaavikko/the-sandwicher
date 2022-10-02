@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading;
 using AnttiStarterKit.ScriptableObjects;
 using UnityEngine;
 
@@ -101,11 +102,11 @@ namespace AnttiStarterKit.Managers
 			curMusic.Play ();
 		}
 
-		private void Update()
+		private void FixedUpdate()
 		{
 			var targetLowpass = (doingLowpass) ? 5000f : 22000;
 			var targetHighpass = (doingHighpass) ? 400f : 10f;
-			const float changeSpeed = 0.075f;
+			var changeSpeed = 0.075f * Time.deltaTime * 1000f;
 
 			curMusic.pitch = Mathf.MoveTowards (curMusic.pitch, TargetPitch, 0.005f * changeSpeed);
 			if(lowpass) lowpass.cutoffFrequency = Mathf.MoveTowards (lowpass.cutoffFrequency, targetLowpass, 750f * changeSpeed);

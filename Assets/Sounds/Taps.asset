@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Taps
+  m_EditorClassIdentifier: 
+  volume: 0.5
+  clips:
+  - {fileID: 8300000, guid: 0e3780ac1ded648e1a9a2042eac5cfad, type: 3}
+  - {fileID: 8300000, guid: 4f3d6037f69a14d059ddb8ee7e627d05, type: 3}
+  - {fileID: 8300000, guid: 20cfe5c699e4f4076950b01313754458, type: 3}
+  - {fileID: 8300000, guid: 5083ff8026d4848f19c44f148a9f6328, type: 3}
+  - {fileID: 8300000, guid: 8e18f100e2f344d1d8f5daa6db1be4a3, type: 3}
+  - {fileID: 8300000, guid: dce49c3a902ec42f5a4a72edcfe92e3c, type: 3}
+  - {fileID: 8300000, guid: 789664741e4454d1da83690d5276fa48, type: 3}

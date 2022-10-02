@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Pops
+  m_EditorClassIdentifier: 
+  volume: 0.5
+  clips:
+  - {fileID: 8300000, guid: 3b858cecc66aa466b909bef0c043bc0a, type: 3}
+  - {fileID: 8300000, guid: 0eb23e2b4496142fdbddaa67f82af782, type: 3}
+  - {fileID: 8300000, guid: bba9fec77c34746bbb7021040412588e, type: 3}
+  - {fileID: 8300000, guid: dc723ef63d58248bc87db3cb68af1afb, type: 3}
+  - {fileID: 8300000, guid: d88fc3e18185f43a2a698b20287a461e, type: 3}
+  - {fileID: 8300000, guid: f925373e261c24f96886e99483d18027, type: 3}
+  - {fileID: 8300000, guid: 7489508b2f8434f5696fac62c4df7262, type: 3}

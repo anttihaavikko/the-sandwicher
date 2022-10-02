@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Hurts
+  m_EditorClassIdentifier: 
+  volume: 0.5
+  clips:
+  - {fileID: 8300000, guid: 6d66cdf1a96514037aaf89e2457ab1a5, type: 3}
+  - {fileID: 8300000, guid: 388939c6da4f8491e9e2f425d67f54f7, type: 3}
+  - {fileID: 8300000, guid: 39155aba3d3bb49f18b911a1e00d73fc, type: 3}
+  - {fileID: 8300000, guid: 0f2230ff0b532471b82334fabdfb30b7, type: 3}
+  - {fileID: 8300000, guid: af61d727df3c141578fda323f79c1e33, type: 3}
+  - {fileID: 8300000, guid: 0043e630b39d54bfdb18ee7ce5b947c6, type: 3}
+  - {fileID: 8300000, guid: e2d4cdef30ec345cdb2c8680d89f2ff0, type: 3}

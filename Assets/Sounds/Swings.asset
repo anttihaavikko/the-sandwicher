@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Swings
+  m_EditorClassIdentifier: 
+  volume: 0.3
+  clips:
+  - {fileID: 8300000, guid: 4d98e95b823a94ccab425ee1a0796724, type: 3}
+  - {fileID: 8300000, guid: b8a740eacabc5453a81123a3ee316618, type: 3}
+  - {fileID: 8300000, guid: add19e0fb8d734348b303091e79c6f01, type: 3}
+  - {fileID: 8300000, guid: 13f460ccd81894affaf7dd32e35f8e30, type: 3}
+  - {fileID: 8300000, guid: 5feedef42564d40b5aab4dcd08c20f26, type: 3}
+  - {fileID: 8300000, guid: 29260b51119bc49e295a81fb17ab10fc, type: 3}
+  - {fileID: 8300000, guid: 4c0efd7c3eb2f43bd9d8f3636f95b9b1, type: 3}

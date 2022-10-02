@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.Instance.TargetPitch = 1;
+        
         anim = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
     }
@@ -64,13 +66,16 @@ public class Player : MonoBehaviour
     private void Launch(Vector3 mousePos)
     {
         if (field.IsLocked) return;
-        
-        var dir = mousePos - transform.position;
+
+        var position = transform.position;
+        var dir = mousePos - position;
         var amount = Mathf.Min(dir.magnitude * 5f, 10f);
         body.AddForce(dir.normalized * amount, ForceMode2D.Impulse);
         anim.SetTrigger(LaunchAnim);
         launching = true;
         JumpLines();
+        
+        AudioManager.Instance.PlayEffectFromCollection(1, position);
     }
 
     private void JumpLines()
@@ -131,6 +136,10 @@ public class Player : MonoBehaviour
         
         JumpLines();
 
+        var p = transform.position;
+        AudioManager.Instance.PlayEffectFromCollection(9, p);
+        AudioManager.Instance.PlayEffectFromCollection(8, p);
+
         this.StartCoroutine(() => canLand = true, 0.2f);
 
         if (willLevel)
@@ -138,6 +147,16 @@ public class Player : MonoBehaviour
             willLevel = false;
             field.LevelUp();
         }
+    }
+
+    public void SwingSound()
+    {
+        AudioManager.Instance.PlayEffectFromCollection(7, transform.position);
+    }
+    
+    public void HitSound()
+    {
+        AudioManager.Instance.PlayEffectFromCollection(2, transform.position);
     }
 
     public void Die()
@@ -150,6 +169,8 @@ public class Player : MonoBehaviour
         bits.transform.position = pos;
         bits.SetActive(true);
         field.GameOver();
+
+        AudioManager.Instance.TargetPitch = 0;
     }
 
     public void Heal()
@@ -178,5 +199,10 @@ public class Player : MonoBehaviour
         return potions.Count > 20 ? 
             potions.Dequeue() : 
             Instantiate(potionPrefab, null);
+    }
+
+    public void Hurt()
+    {
+        AudioManager.Instance.PlayEffectFromCollection(0, transform.position);
     }
 }

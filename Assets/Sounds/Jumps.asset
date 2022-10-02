@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Jumps
+  m_EditorClassIdentifier: 
+  volume: 0.5
+  clips:
+  - {fileID: 8300000, guid: a3a05bab68a884c94aed64b3bb25e302, type: 3}
+  - {fileID: 8300000, guid: 55cf0ec99d3c147a3bd0464e98dba14b, type: 3}
+  - {fileID: 8300000, guid: e7fd9cc08a9aa49678ebf65e246cd97e, type: 3}
+  - {fileID: 8300000, guid: 4c954a652c1cb459eb35004ea42235bc, type: 3}
+  - {fileID: 8300000, guid: eb7500570b6f44029b63bcf9c3c265a0, type: 3}
+  - {fileID: 8300000, guid: 6ccfac92d049641a3ab835e28dca2f09, type: 3}
+  - {fileID: 8300000, guid: 13e435e31c2c54a31b5473aaa885a25b, type: 3}
+  - {fileID: 8300000, guid: b22888d120afd45098dc2249f8abd033, type: 3}

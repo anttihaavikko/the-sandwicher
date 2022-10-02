@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Knocks
+  m_EditorClassIdentifier: 
+  volume: 0.5
+  clips:
+  - {fileID: 8300000, guid: 85e07ad93a6c54b2f989e58d3be09440, type: 3}
+  - {fileID: 8300000, guid: 42b9711b0c6eb424f81e8802063c5bb9, type: 3}
+  - {fileID: 8300000, guid: 2e8d1fd266f0747ee9d5924a68db1dc6, type: 3}
+  - {fileID: 8300000, guid: bc8714573bfe842d7a5e0b9f4490f70d, type: 3}
+  - {fileID: 8300000, guid: 777bc43698f8346c5ae5d8217005a85b, type: 3}
+  - {fileID: 8300000, guid: ab62d8b14fc404b058ad06f512142280, type: 3}
+  - {fileID: 8300000, guid: b66d7036acb3a49159ceaae0ddf8627b, type: 3}
+  - {fileID: 8300000, guid: eaf84873553c24bdabb9ad83fbf4ebd0, type: 3}

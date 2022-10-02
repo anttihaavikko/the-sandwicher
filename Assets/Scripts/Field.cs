@@ -159,6 +159,8 @@ public class Field : MonoBehaviour
             Damage(dmg);
         }
         
+        AudioManager.Instance.PlayEffectFromCollection(5, p);
+        
         var amount = 10 * combo * dmg;
         var shown = amount * scoreDisplay.Multi;
         var e = EffectManager.AddTextPopup(shown.AsScore(), p + Vector3.up * 0.5f);
@@ -166,6 +168,7 @@ public class Field : MonoBehaviour
 
         if (player.gameObject.activeInHierarchy)
         {
+            player.HitSound();
             scoreDisplay.Add(amount);
         }
         
@@ -200,6 +203,7 @@ public class Field : MonoBehaviour
         }
         
         health.TakeDamage<GameObject>(amount);
+        player.Hurt();
     }
 
     public void Burn()
