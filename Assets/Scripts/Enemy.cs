@@ -47,9 +47,16 @@ public class Enemy : MonoBehaviour
         
         visuals.localScale = Vector3.zero;
         
-        body.AddForce(Vector3.zero.RandomOffset(1f) * Random.value, ForceMode2D.Impulse);
+        Move();
         
         Tweener.ScaleToBounceOut(visuals, Vector3.one * scale, 0.4f);
+    }
+
+    private void Move()
+    {
+        body.AddForce(Vector3.zero.RandomOffset(1f) * Random.value, ForceMode2D.Impulse);
+        body.AddTorque(Random.Range(-0.06f, 0.06f), ForceMode2D.Impulse);
+        Invoke(nameof(Move), Random.Range(2f, 10f));
     }
 
 
@@ -58,6 +65,7 @@ public class Enemy : MonoBehaviour
         var player = col.GetComponent<Player>();
         if (!player || !player.IsAttacking) return;
         CancelInvoke(nameof(Crumble));
+        CancelInvoke(nameof(Move));
         Field.Effect(0.2f);
         EffectManager.AddEffects(new []{ 0, 1, 2, 3}, transform.position);
         Field.RemoveEnemy(this);
