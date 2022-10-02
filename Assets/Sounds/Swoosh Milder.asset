@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Swoosh Milder
+  m_EditorClassIdentifier: 
+  volume: 0.1
+  clips:
+  - {fileID: 8300000, guid: a167ba6a9bc2045d79064442cd010f26, type: 3}
+  - {fileID: 8300000, guid: fecfe94f3cb3644e28a09a4db02f49d2, type: 3}
+  - {fileID: 8300000, guid: cd3aa260a16f04f43837861a7169998f, type: 3}
+  - {fileID: 8300000, guid: 871c9182ad0e04153b5b9ebeee7faf16, type: 3}
+  - {fileID: 8300000, guid: 5c802537e878644d88390d61dd8b4cba, type: 3}
+  - {fileID: 8300000, guid: aa8898bdcfb0d4ca1abc4e3b430e0436, type: 3}
+  - {fileID: 8300000, guid: 47ac1487d78b54653adeb28bf4c2342b, type: 3}
+  - {fileID: 8300000, guid: 5d0705469152043e09096414a376b396, type: 3}
+  - {fileID: 8300000, guid: a0df06ae130004f0bb0b5c72b4aed56a, type: 3}
+  - {fileID: 8300000, guid: 8845cce6859424340bf4dbbdcf33441a, type: 3}
+  - {fileID: 8300000, guid: 343cae5d2559b42d887e09aa046a60eb, type: 3}
+  - {fileID: 8300000, guid: baa71826fa8c746348525051d2235147, type: 3}
+  - {fileID: 8300000, guid: 5151439832a7842648200fdbaac85272, type: 3}

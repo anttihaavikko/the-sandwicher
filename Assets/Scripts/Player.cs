@@ -194,7 +194,7 @@ public class Player : MonoBehaviour
         t.rotation = potionSpawnPos.rotation;
         pot.AddForce(Vector3.zero.RandomOffset(0.5f), ForceMode2D.Impulse);
         potions.Enqueue(pot);
-        AudioManager.Instance.PlayEffectFromCollection(11, pos);
+        AudioManager.Instance.PlayEffectFromCollection(12, pos, 0.6f);
     }
 
     private Rigidbody2D CreatePotion()

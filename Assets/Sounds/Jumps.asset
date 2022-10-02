@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
   m_Name: Jumps
   m_EditorClassIdentifier: 
-  volume: 0.5
+  volume: 0.8
   clips:
   - {fileID: 8300000, guid: a3a05bab68a884c94aed64b3bb25e302, type: 3}
   - {fileID: 8300000, guid: 55cf0ec99d3c147a3bd0464e98dba14b, type: 3}

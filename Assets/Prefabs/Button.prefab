@@ -318,12 +318,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894eaa5182eb64ca5afcfef91441454f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCollection: {fileID: 0}
+  soundCollection: {fileID: 11400000, guid: c25c849607b2c464cbb9d93fa3d4174d, type: 2}
   appearAfter: -1
   hideDelay: 0
   silent: 0
   visuals: {fileID: 8655540651940044351}
-  inScreenSpace: 0
+  inScreenSpace: 1
   cam: {fileID: 0}
   text: {fileID: 0}
 --- !u!1 &8655540651940044351
@@ -484,10 +484,10 @@ MonoBehaviour:
   - {r: 0.8039216, g: 0.3254902, b: 0.20392157, a: 1}
   frontColors:
   - {r: 1, g: 1, b: 1, a: 1}
-  clickSound: -1
-  hoverSound: -1
+  clickSound: 0
+  hoverSound: 1
   clickVolume: 1
-  hoverVolume: 1
+  hoverVolume: 0.2
 --- !u!1 &8655540653108402341
 GameObject:
   m_ObjectHideFlags: 0

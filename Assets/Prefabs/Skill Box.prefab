@@ -326,10 +326,10 @@ MonoBehaviour:
   - {r: 0.8039216, g: 0.3254902, b: 0.20392157, a: 1}
   frontColors:
   - {r: 1, g: 1, b: 1, a: 1}
-  clickSound: -1
-  hoverSound: -1
+  clickSound: 0
+  hoverSound: 1
   clickVolume: 1
-  hoverVolume: 1
+  hoverVolume: 0.2
 --- !u!114 &1696681209367398334
 MonoBehaviour:
   m_ObjectHideFlags: 0
