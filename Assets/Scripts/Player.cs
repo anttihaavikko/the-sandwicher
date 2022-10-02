@@ -171,12 +171,15 @@ public class Player : MonoBehaviour
         bits.SetActive(true);
         field.GameOver();
 
+        AudioManager.Instance.PlayEffectFromCollection(14, pos, 3f);
         AudioManager.Instance.TargetPitch = 0;
     }
 
     public void Heal()
     {
-        EffectManager.AddEffect(5, transform.position, body.rotation);
+        var p = transform.position;
+        EffectManager.AddEffect(5, p, body.rotation);
+        AudioManager.Instance.PlayEffectAt(2, p, 0.3f);
         field.Heal();
     }
 
@@ -207,5 +210,10 @@ public class Player : MonoBehaviour
     public void Hurt()
     {
         AudioManager.Instance.PlayEffectFromCollection(0, transform.position);
+    }
+
+    public void ShieldSound()
+    {
+        AudioManager.Instance.PlayEffectAt(4, transform.position, 0.8f);
     }
 }

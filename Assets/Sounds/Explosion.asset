@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Explosion
+  m_EditorClassIdentifier: 
+  volume: 0.5
+  clips:
+  - {fileID: 8300000, guid: b67ead14ec825429785cda14a3febcd6, type: 3}
+  - {fileID: 8300000, guid: 3638f4fa587584b669cd229717179d42, type: 3}
+  - {fileID: 8300000, guid: 77660d85570b34b5e86468109a96d10e, type: 3}
+  - {fileID: 8300000, guid: 01ac0917dbec94b0dbcdc586c45678dc, type: 3}
+  - {fileID: 8300000, guid: 7e103346222ae4bd2acb43a643a4060f, type: 3}

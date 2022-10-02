@@ -161,6 +161,7 @@ public class Field : MonoBehaviour
 
         if (!passive)
         {
+            AudioManager.Instance.PlayEffectFromCollection(14, p, 1.2f);
             AudioManager.Instance.PlayEffectFromCollection(5, p);   
         }
 
@@ -196,6 +197,7 @@ public class Field : MonoBehaviour
             }
             
             EffectManager.AddEffects(new []{ 0, 3 }, player.transform.position);
+            player.ShieldSound();
 
             return;
         }
@@ -292,6 +294,10 @@ public class Field : MonoBehaviour
 
         if (stats[4] > 0)
         {
+            if (shields <= 0)
+            {
+                player.ShieldSound();
+            }
             shield.Show();
             shields = stats[4];
         }
@@ -333,6 +339,7 @@ public class Field : MonoBehaviour
 
     public void GameOver()
     {
+        this.StartCoroutine(() => AudioManager.Instance.PlayEffectAt(3, Vector3.zero, 0.5f), 0.2f);
         var reason = GetDeathReason();
         deathReasonTexts.ForEach(t => t.text = reason);
         gameOverStuff.SetActive(true);
