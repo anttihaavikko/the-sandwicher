@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using AnttiStarterKit.Animations;
 using AnttiStarterKit.Extensions;
 using AnttiStarterKit.Game;
@@ -12,11 +13,14 @@ public class Player : MonoBehaviour
     [SerializeField] private LineRenderer arrow;
     [SerializeField] private GameObject extras, bits;
     [SerializeField] private Flasher flasher;
+    [SerializeField] private GameObject potionPrefab;
+    [SerializeField] private Transform potionSpawnPos;
 
     private Rigidbody2D body;
     private bool canLand = true;
     private bool launching;
     private Animator anim;
+    private readonly Queue<GameObject> potions = new();
 
     private bool willLevel;
     
@@ -147,5 +151,20 @@ public class Player : MonoBehaviour
     public void MarkForLevelUp()
     {
         willLevel = true;
+    }
+
+    private void DropPotion()
+    {
+        var pot = CreatePotion();
+        pot.transform.position = potionSpawnPos.position;
+        pot.transform.rotation = potionSpawnPos.rotation;
+        potions.Enqueue(pot);
+    }
+
+    private GameObject CreatePotion()
+    {
+        return potions.Count > 20 ? 
+            potions.Dequeue() : 
+            Instantiate(potionPrefab, null);
     }
 }

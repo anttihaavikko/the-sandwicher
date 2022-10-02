@@ -33,9 +33,9 @@ public class SkillBox : MonoBehaviour
             0 => $"Alchemy LVL {level}",
             1 => $"Aarg LVL {level}",
             2 => $"Ignu LVL {level}",
-            3 => $"Urden LVL {level}",
+            3 => $"Azii LVL {level}",
             4 => $"Guen LVL {level}",
-            5 => $"Azii LVL {level}",
+            5 => $"Urden LVL {level}",
             _ => "Unknown"
         };
     }
