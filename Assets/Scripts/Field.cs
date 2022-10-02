@@ -25,6 +25,7 @@ public class Field : MonoBehaviour
     [SerializeField] private List<TMP_Text> waveTexts;
     [SerializeField] private LineDrawer lineDrawer;
     [SerializeField] private Color fireColor, charmColor;
+    [SerializeField] private Appearer shield;
 
     private List<Enemy> enemies = new();
     
@@ -33,6 +34,7 @@ public class Field : MonoBehaviour
     private int level = 1;
     private bool leveling;
     private bool locked;
+    private int shields;
     
     private int[] stats = new int[6];
 
@@ -150,7 +152,7 @@ public class Field : MonoBehaviour
 
         if (!enemy.IsCharmed)
         {
-            health.TakeDamage<GameObject>(enemy.IsChamp ? round : 1);
+            Damage(enemy.IsChamp ? round : 1);
         }
 
         var mod = enemy.IsChamp ? round : 1;
@@ -173,7 +175,25 @@ public class Field : MonoBehaviour
         
         Charm();
     }
-    
+
+    private void Damage(int amount)
+    {
+        if (amount >= health.Current && shields > 0)
+        {
+            shields--;
+            if (shields <= 0)
+            {
+                shield.Hide();
+            }
+            
+            EffectManager.AddEffects(new []{ 0, 3 }, player.transform.position);
+
+            return;
+        }
+        
+        health.TakeDamage<GameObject>(amount);
+    }
+
     public void Burn()
     {
         var amount = stats[2];
@@ -249,6 +269,12 @@ public class Field : MonoBehaviour
     public void Heal()
     {
         health.Heal(SkillBox.BaseHeal + stats[0] * SkillBox.HealPerAlchemyLevel);
+
+        if (stats[4] > 0)
+        {
+            shield.Show();
+            shields = stats[4];
+        }
     }
 
     public void Pick(int index)

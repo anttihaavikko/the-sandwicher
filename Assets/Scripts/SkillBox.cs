@@ -52,7 +52,9 @@ public class SkillBox : MonoBehaviour
                 $"Burn {level} closest enemies when landing from a jump." : 
                 "Burn closest enemy when landing from a jump.",
             3 => $"Enemy wave meter fills {level * SlowAmountPerLevel}% more slowly.",
-            4 => "Gain a shield something something dunno.",
+            4 => level > 1 ? 
+                $"Cast a shield that protects you from a {level} killing blows." :
+                "Cast a shield that protects you from a killing blow.",
             5 => level > 1 ? 
                 $"Charm {level} closest enemies on kill. Charmed enemies will not retaliate." : 
                 "Charm closest enemy on kill. Charmed enemies will not retaliate.",
