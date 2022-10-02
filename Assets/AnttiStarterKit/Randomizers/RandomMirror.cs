@@ -8,7 +8,7 @@ namespace AnttiStarterKit.Randomizers
         {
             var t = transform;
             var scale = t.localScale;
-            scale = new Vector3(Random.value < 0.5f ? 1f : -1f * scale.x, scale.y, scale.z);
+            scale = new Vector3((Random.value < 0.5f ? 1f : -1f) * scale.x, scale.y, scale.z);
             t.localScale = scale;
         }
     }
