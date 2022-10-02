@@ -15,7 +15,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Flasher flasher;
     [SerializeField] private Rigidbody2D potionPrefab;
     [SerializeField] private Transform potionSpawnPos;
-
+    [SerializeField] private Transform feetPos;
+    
     private Rigidbody2D body;
     private bool canLand = true;
     private bool launching;
@@ -69,6 +70,12 @@ public class Player : MonoBehaviour
         body.AddForce(dir.normalized * amount, ForceMode2D.Impulse);
         anim.SetTrigger(LaunchAnim);
         launching = true;
+        JumpLines();
+    }
+
+    private void JumpLines()
+    {
+        EffectManager.AddEffect(7, feetPos.position, body.rotation);
     }
 
     private void FixedUpdate()
@@ -121,6 +128,8 @@ public class Player : MonoBehaviour
         anim.SetTrigger(LandAnim);
         field.ResetCombo();
         field.AddMulti();
+        
+        JumpLines();
 
         this.StartCoroutine(() => canLand = true, 0.2f);
 
