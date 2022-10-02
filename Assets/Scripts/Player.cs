@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
 
     private void Curve()
     {
-        if (!field.HasEnemies || !launching) return;
+        if (!field || !field.HasEnemies || !launching) return;
         var p = transform.position;
         var closest = field.GetClosestEnemyPosition(p);
         var diff = closest - p;

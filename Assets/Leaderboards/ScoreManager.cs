@@ -44,10 +44,6 @@ namespace Leaderboards
 		private static ScoreManager instance = null;
 		private LeaderBoardData data;
 
-		public static ScoreManager Instance {
-			get { return instance; }
-		}
-
 		public void CancelLeaderboards() {
 			StopAllCoroutines ();
 		}
@@ -96,12 +92,6 @@ namespace Leaderboards
 		}
 
 		private void Awake() {
-			if (instance != null && instance != this) {
-				Destroy (this.gameObject);
-				return;
-			}
-
-			instance = this;
 			certHandler = new CustomCertificateHandler();
 		}
 
