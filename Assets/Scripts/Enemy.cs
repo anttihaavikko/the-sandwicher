@@ -66,6 +66,7 @@ public class Enemy : MonoBehaviour
         if (!player || !player.IsAttacking) return;
         CancelInvoke(nameof(Crumble));
         CancelInvoke(nameof(Move));
+        CancelInvoke(nameof(CharmSound));
         Field.Effect(0.2f);
         EffectManager.AddEffects(new []{ 0, 1, 2, 3}, transform.position);
         Field.RemoveEnemy(this);
@@ -80,8 +81,19 @@ public class Enemy : MonoBehaviour
         body.AddForce(inversed * amount, mode);
     }
 
+    private void CharmSound()
+    {
+        AudioManager.Instance.PlayEffectFromCollection(10, transform.position);
+    }
+
     public void Charm()
     {
+        if (!champ)
+        {
+            Invoke(nameof(CharmSound), Random.Range(0f, 0.3f));
+        }
+        
+        
         if (charmed || champ) return;
         charmed = true;
         charmEffect.SetActive(true);
@@ -99,11 +111,14 @@ public class Enemy : MonoBehaviour
         burned = true;
         Colorize(burnColor);
         Invoke(nameof(Crumble), Random.Range(0.5f, 2f));
+        AudioManager.Instance.PlayEffectFromCollection(12, transform.position);
     }
 
     private void Crumble()
     {
-        EffectManager.AddEffect(6, transform.position);
+        var p = transform.position;
+        EffectManager.AddEffect(6, p);
+        AudioManager.Instance.PlayEffectFromCollection(12, p);
         Field.RemoveEnemy(this, true);
         Destroy(gameObject);
     }

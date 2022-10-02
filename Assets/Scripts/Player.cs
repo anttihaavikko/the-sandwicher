@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
         JumpLines();
         
         AudioManager.Instance.PlayEffectFromCollection(1, position);
+        AudioManager.Instance.PlayEffectFromCollection(11, position);
     }
 
     private void JumpLines()

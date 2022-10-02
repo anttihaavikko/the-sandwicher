@@ -154,13 +154,16 @@ public class Field : MonoBehaviour
         var p = enemy.transform.position;
         var dmg = DamageFor(enemy);
 
-        if (!enemy.IsCharmed)
+        if (!enemy.IsCharmed && !passive)
         {
             Damage(dmg);
         }
-        
-        AudioManager.Instance.PlayEffectFromCollection(5, p);
-        
+
+        if (!passive)
+        {
+            AudioManager.Instance.PlayEffectFromCollection(5, p);   
+        }
+
         var amount = 10 * combo * dmg;
         var shown = amount * scoreDisplay.Multi;
         var e = EffectManager.AddTextPopup(shown.AsScore(), p + Vector3.up * 0.5f);
@@ -222,6 +225,9 @@ public class Field : MonoBehaviour
         if (targets.Any())
         {
             cam.BaseEffect(0.3f);
+            var vol = Mathf.Min(4f, 2f + targets.Count * 0.4f);
+            AudioManager.Instance.PlayEffectFromCollection(9, p, vol);
+            AudioManager.Instance.PlayEffectFromCollection(5, p, vol * 0.6f);
         }
     }
 
