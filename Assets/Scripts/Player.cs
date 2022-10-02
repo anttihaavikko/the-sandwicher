@@ -185,6 +185,12 @@ public class Player : MonoBehaviour
 
     public void MarkForLevelUp()
     {
+        if (!willLevel)
+        {
+            AudioManager.Instance.FilterFor(2f);
+            AudioManager.Instance.PlayEffectAt(5, Vector3.zero, 1.25f);    
+        }
+        
         willLevel = true;
     }
 

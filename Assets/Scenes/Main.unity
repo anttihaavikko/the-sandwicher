@@ -2277,6 +2277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 114852473009967456, guid: 3d15b96e9a8fd4b68902e126f7cce22b, type: 3}
+  chorusFilter: {fileID: 1360280978}
   curMusic: {fileID: 1360280976}
   musics:
   - {fileID: 1360280976}
@@ -2286,6 +2287,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: baa71826fa8c746348525051d2235147, type: 3}
   - {fileID: 8300000, guid: b6102161598cd4f8dbd88b4947a7835b, type: 3}
   - {fileID: 8300000, guid: c0ca79d93b30b456c9547fb79b3532ae, type: 3}
+  - {fileID: 8300000, guid: 3f9997f317306406388addb19c59957b, type: 3}
+  - {fileID: 8300000, guid: 42236bc86deee4a548696419f9763035, type: 3}
   soundCollections:
   - {fileID: 11400000, guid: 4502ecf0cdd3c4083b9a77a7f2ef9711, type: 2}
   - {fileID: 11400000, guid: 90c0c71efd8764e30bb69a50078f5681, type: 2}
@@ -14528,6 +14531,7 @@ GameObject:
   - component: {fileID: 741369323}
   - component: {fileID: 741369324}
   - component: {fileID: 741369325}
+  - component: {fileID: 741369326}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -14772,6 +14776,34 @@ MonoBehaviour:
   - {fileID: 677378243}
   whiteMaterial: {fileID: 2100000, guid: 3f367f67069ac4cfc878f5e675f3fe3f, type: 2}
   duration: 0.1
+--- !u!114 &741369326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741369316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d6364cdfe2743a996f4871ac72b7e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 99
+  action:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 741369321}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: MarkForLevelUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &746613703
 GameObject:
   m_ObjectHideFlags: 0
@@ -23861,6 +23893,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1360280975}
   - component: {fileID: 1360280976}
+  - component: {fileID: 1360280977}
+  - component: {fileID: 1360280978}
   m_Layer: 0
   m_Name: Music
   m_TagString: Untagged
@@ -23979,6 +24013,46 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!169 &1360280977
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360280974}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 2
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!166 &1360280978
+AudioChorusFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1360280974}
+  m_Enabled: 0
+  m_DryMix: 0.1
+  m_WetMix1: 0.1
+  m_WetMix2: 0.1
+  m_WetMix3: 0.1
+  m_Delay: 80
+  m_Rate: 0
+  m_Depth: 1
 --- !u!1 &1361886319
 GameObject:
   m_ObjectHideFlags: 0

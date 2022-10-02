@@ -2,11 +2,14 @@
 using System.Threading;
 using AnttiStarterKit.ScriptableObjects;
 using UnityEngine;
+using AnttiStarterKit.Extensions;
 
 namespace AnttiStarterKit.Managers
 {
 	public class AudioManager : ObjectPool<SoundEffect>
 	{
+		[SerializeField] private AudioChorusFilter chorusFilter;
+		
 		public AudioSource curMusic;
 		public AudioSource[] musics;
 
@@ -65,7 +68,7 @@ namespace AnttiStarterKit.Managers
 
 		public void Lowpass(bool state = true)
 		{
-			if (!lowpass) lowpass = Camera.main.GetComponent<AudioLowPassFilter>();
+			if (!lowpass) lowpass = curMusic.GetComponent<AudioLowPassFilter>();
 
 			doingLowpass = state;
 			doingHighpass = false;
@@ -73,7 +76,7 @@ namespace AnttiStarterKit.Managers
 
 		public void Highpass(bool state = true)
 		{
-			if (!highpass) highpass = Camera.main.GetComponent<AudioHighPassFilter>();
+			if (!highpass) highpass = curMusic.GetComponent<AudioHighPassFilter>();
 			doingHighpass = state;
 			doingLowpass = false;
 		}
@@ -109,7 +112,7 @@ namespace AnttiStarterKit.Managers
 			var changeSpeed = 0.075f * Time.deltaTime * 1000f;
 
 			curMusic.pitch = Mathf.MoveTowards (curMusic.pitch, TargetPitch, 0.005f * changeSpeed);
-			if(lowpass) lowpass.cutoffFrequency = Mathf.MoveTowards (lowpass.cutoffFrequency, targetLowpass, 750f * changeSpeed);
+			if(lowpass) lowpass.cutoffFrequency = Mathf.MoveTowards (lowpass.cutoffFrequency, targetLowpass, 1500f * changeSpeed);
 			if (highpass) highpass.cutoffFrequency = Mathf.MoveTowards (highpass.cutoffFrequency, targetHighpass, 50f * changeSpeed);
 		
 			if (fadeInPos < 1f) fadeInPos += Time.unscaledDeltaTime / fadeInDuration;
@@ -169,6 +172,12 @@ namespace AnttiStarterKit.Managers
 		{
 			PlayerPrefs.SetFloat("SoundVolume", vol);
 			volume = vol;
+		}
+
+		public void FilterFor(float duration)
+		{
+			chorusFilter.enabled = true;
+			this.StartCoroutine(() => chorusFilter.enabled = false, duration);
 		}
 	}
 }
