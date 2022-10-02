@@ -67,6 +67,7 @@ public class Enemy : MonoBehaviour
         CancelInvoke(nameof(Crumble));
         CancelInvoke(nameof(Move));
         CancelInvoke(nameof(CharmSound));
+        CancelInvoke(nameof(Laugh));
         Field.Effect(0.2f);
         EffectManager.AddEffects(new []{ 0, 1, 2, 3}, transform.position);
         Field.RemoveEnemy(this);
@@ -128,5 +129,12 @@ public class Enemy : MonoBehaviour
         champ = true;
         eyepatch.gameObject.SetActive(true);
         eyepatch.localScale = Vector3.one.WhereY(Misc.PlusMinusOne());
+        
+        Invoke(nameof(Laugh), Random.Range(0f, 0.5f));
+    }
+
+    private void Laugh()
+    {
+        AudioManager.Instance.PlayEffectFromCollection(15, transform.position);
     }
 }

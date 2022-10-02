@@ -174,10 +174,10 @@ namespace AnttiStarterKit.Managers
 			volume = vol;
 		}
 
-		public void FilterFor(float duration)
+		public void LowpassFor(float duration)
 		{
-			chorusFilter.enabled = true;
-			this.StartCoroutine(() => chorusFilter.enabled = false, duration);
+			Lowpass();
+			this.StartCoroutine(() => Lowpass(false), duration);
 		}
 	}
 }

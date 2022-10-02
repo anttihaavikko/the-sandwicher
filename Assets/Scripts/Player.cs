@@ -187,8 +187,12 @@ public class Player : MonoBehaviour
     {
         if (!willLevel)
         {
-            AudioManager.Instance.FilterFor(2f);
-            AudioManager.Instance.PlayEffectAt(5, Vector3.zero, 1.25f);    
+            // AudioManager.Instance.FilterFor(2f);
+            var am = AudioManager.Instance;
+            am.TargetPitch = 3f;
+            am.PlayEffectAt(5, Vector3.zero, 2.5f);
+            this.StartCoroutine(() => am.TargetPitch = 1f, 1f);
+            am.LowpassFor(2f);
         }
         
         willLevel = true;

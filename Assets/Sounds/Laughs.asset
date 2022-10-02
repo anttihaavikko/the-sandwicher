@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ed6741a13249ff91a11647becccdea, type: 3}
+  m_Name: Laughs
+  m_EditorClassIdentifier: 
+  volume: 1
+  clips:
+  - {fileID: 8300000, guid: e387240f8aba640b092c18abd492081a, type: 3}
+  - {fileID: 8300000, guid: 1d0a74e9ad1b748fa9530f23b62eda82, type: 3}
+  - {fileID: 8300000, guid: 1aaad7e682d8a446a9b864a8d1bca06f, type: 3}
+  - {fileID: 8300000, guid: 1c40c3bc9fac14a8f80a2d43bbf2844e, type: 3}
+  - {fileID: 8300000, guid: 1411a4a3687504774936123042406699, type: 3}
+  - {fileID: 8300000, guid: bd47bf1b4ad094f38a9ef7d5fc49ae4b, type: 3}
+  - {fileID: 8300000, guid: 0654695ddfe124bf180a178c008a50e4, type: 3}
+  - {fileID: 8300000, guid: 3e76f5cdb0ec14e99a54a84924bb6e8a, type: 3}
